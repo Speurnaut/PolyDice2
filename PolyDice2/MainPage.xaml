@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PolyDice2.MainPage"
+             xmlns:colors="Colors.xaml">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid Padding="10" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="25" />
+                </Grid.ColumnDefinitions>
+
+                <ImageButton
+                    x:Name="LeftBtn"
+                    Source="left.png"
+                    VerticalOptions="Center"
+                    Clicked="OnLeftClicked"
+                    Grid.Column="0" />
+
+                <Image
+                    x:Name="IconImg"
+                    Margin="10" 
+                    Source="d20.png"
+                    HorizontalOptions="Fill"
+                    Grid.Column="1"
+                    Aspect="AspectFit" />
+
+                <ImageButton
+                    x:Name="RightBtn"
+                    Source="right.png"
+                    VerticalOptions="Center"
+                    Clicked="OnRightClicked"
+                    Grid.Column="2" />
+            </Grid>
+
+            <Button
+                x:Name="RollBtn"
+                Text="Roll"
+                SemanticProperties.Hint="Rolls your selected die"
+                Clicked="OnRollClicked"
+                HorizontalOptions="Center" />
+
+            <Label
+                x:Name="OutputLbl"
+                Text="D20"
+                HorizontalOptions="Center" />
+
+            <ActivityIndicator
+                x:Name="RollAct"
+                IsVisible="False"
+                IsRunning="False" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
