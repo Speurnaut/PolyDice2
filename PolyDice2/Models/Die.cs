@@ -20,16 +20,41 @@
             }
         }
         public string Icon { get { return $"d{Sides}.png"; } }
+        public bool ForceSimpleMode { get { return Sides == 2; } }
 
-        public string Roll()
+        public int Roll()
         {
             Random rng = new Random();
-            var result = rng.Next(1, Sides + 1);
+            return rng.Next(1, Sides + 1);
+        }
+
+        public (string result, string breakdown) Roll(int count = 1, int modifier = 0)
+        {
+            int total = 0;
+            string breakdown = "";
+
             if (Sides == 2)
             {
-                return result == 1 ? "Heads" : "Tails";
+                return (Roll() == 1 ? "Heads" : "Tails", "Not available for this die");
             }
-            return result.ToString();
+
+            for (int i = 1; i <= count; i++)
+            {
+                if (i > 1 && i <= count)
+                {
+                    breakdown += " + ";
+                }
+
+                int roll = Roll();
+                total += roll;
+                breakdown += $"{Name}({roll})";
+            }
+
+            total += modifier;
+            string formattedModifier = modifier >= 0 ? " + " + modifier : " - " + (modifier * -1);
+            breakdown += formattedModifier;
+
+            return (total.ToString(), breakdown);
         }
 
         public void Next()

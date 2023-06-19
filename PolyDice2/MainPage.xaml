@@ -36,16 +36,70 @@
                     Grid.Column="2" />
             </Grid>
 
+            <Grid x:Name="AdvancedOptionsGrd">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="#" HorizontalOptions="Center" />
+
+                <Label x:Name="CountLbl"
+                    Text="1"
+                    Grid.Row="1" Grid.Column="0"
+                    Style="{StaticResource Key=OutputLblStyle}"
+                    HorizontalOptions="Center" />
+
+                <HorizontalStackLayout Grid.Row="2" Grid.Column="0" HorizontalOptions="Center">
+                    <Button x:Name="CountLessBtn" Text="-" Style="{StaticResource Key=StepperBtnStyle}" Clicked="CountLess" IsEnabled="False" />
+                    <Button x:Name="CountMoreBtn" Text="+" Style="{StaticResource Key=StepperBtnStyle}" Clicked="CountMore" />
+                </HorizontalStackLayout>
+
+                <Label x:Name="NameLbl"
+                    Text="D20"
+                    Grid.Row="1" Grid.Column="1"
+                    Style="{StaticResource Key=OutputLblStyle}"
+                    HorizontalOptions="Center" VerticalOptions="Center" />
+
+                <Label Text="Modifier"
+                    Grid.Row="0" Grid.Column="2"
+                    HorizontalOptions="Center" />
+
+                <Label x:Name="ModifierLbl"
+                    Text="+0"
+                    Grid.Row="1" Grid.Column="2"
+                    Style="{StaticResource Key=OutputLblStyle}"
+                    HorizontalOptions="Center" />
+
+                <HorizontalStackLayout Grid.Row="2" Grid.Column="2" HorizontalOptions="Center">
+                    <Button x:Name="ModifierLessBtn" Text="-" Style="{StaticResource Key=StepperBtnStyle}" Clicked="ModifierLess" />
+                    <Button x:Name="ModifierMoreBtn" Text="+" Style="{StaticResource Key=StepperBtnStyle}" Clicked="ModifierMore" />
+                </HorizontalStackLayout>
+            </Grid>
+
             <Button
                 x:Name="RollBtn"
                 Text="Roll"
                 SemanticProperties.Hint="Rolls your selected die"
                 Clicked="OnRollClicked"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center"
+                Style="{StaticResource Key=RollBtnStyle}"/>
 
             <Label
                 x:Name="OutputLbl"
-                Text="D20"
+                Text=""
+                HorizontalOptions="Center"
+                Style="{StaticResource Key=OutputLblStyle}" />
+
+            <Label
+                x:Name="BreakdownLbl"
+                Text=""
                 HorizontalOptions="Center" />
 
             <ActivityIndicator
