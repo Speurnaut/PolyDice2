@@ -6,16 +6,18 @@
     <Color x:Key="GreyLight">#7F7F7F</Color>
     <Color x:Key="GreyMid">#5D5D5D</Color>
     <Color x:Key="GreyDark">#2B2B2B</Color>
-    
+
     <Style TargetType="Page" ApplyToDerivedTypes="True">
         <Setter Property="BackgroundColor" Value="{StaticResource GreyDark}" />
     </Style>
 
     <Style TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource GreyLight}" />
-        <Setter Property="FontSize" Value="72" />
+    </Style>
+
+    <Style x:Key="OutputLblStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="48" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="Margin" Value="20" />
     </Style>
 
     <Style TargetType="ActivityIndicator">
@@ -28,8 +30,6 @@
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{StaticResource GreyDark}" />
         <Setter Property="BackgroundColor" Value="{StaticResource GreyLight}" />
-        <Setter Property="FontSize" Value="48" />
-        <Setter Property="Margin" Value="10" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
@@ -43,5 +43,15 @@
                 </VisualStateGroup>
             </VisualStateGroupList>
         </Setter>
+    </Style>
+
+    <Style x:Key="StepperBtnStyle" TargetType="Button">
+        <Setter Property="Margin" Value="5" />
+    </Style>
+
+    <Style x:Key="RollBtnStyle" TargetType="Button">
+        <Setter Property="FontSize" Value="48" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="FontAttributes" Value="Bold" />
     </Style>
 </ResourceDictionary>
