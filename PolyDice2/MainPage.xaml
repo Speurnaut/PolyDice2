@@ -13,30 +13,26 @@
                     <ColumnDefinition Width="25" />
                 </Grid.ColumnDefinitions>
 
-                <ImageButton
-                    x:Name="LeftBtn"
-                    Source="left.png"
+                <ImageButton Source="left.png"
+                    Grid.Column="0"
                     VerticalOptions="Center"
                     Clicked="OnLeftClicked"
-                    Grid.Column="0" />
+                    IsEnabled="{Binding EnableControls}" />
 
-                <Image
-                    x:Name="IconImg"
-                    Margin="10" 
-                    Source="d20.png"
-                    HorizontalOptions="Fill"
+                <Image Source="{Binding CurrentDie.Icon}"
                     Grid.Column="1"
+                    HorizontalOptions="Fill"
+                    Margin="10" 
                     Aspect="AspectFit" />
 
-                <ImageButton
-                    x:Name="RightBtn"
-                    Source="right.png"
+                <ImageButton Source="right.png"
+                    Grid.Column="2"
                     VerticalOptions="Center"
                     Clicked="OnRightClicked"
-                    Grid.Column="2" />
+                    IsEnabled="{Binding EnableControls}" />
             </Grid>
 
-            <Grid x:Name="AdvancedOptionsGrd">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
@@ -48,66 +44,85 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Text="#" HorizontalOptions="Center" />
+                <Label Text="#"
+                    Grid.Row="0" Grid.Column="0"
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding ShowAdvancedOptions}" />
 
-                <Label x:Name="CountLbl"
-                    Text="1"
+                <Label Text="{Binding Count}"
                     Grid.Row="1" Grid.Column="0"
+                    HorizontalOptions="Center"
                     Style="{StaticResource Key=OutputLblStyle}"
-                    HorizontalOptions="Center" />
+                    IsVisible="{Binding ShowAdvancedOptions}" />
 
-                <HorizontalStackLayout Grid.Row="2" Grid.Column="0" HorizontalOptions="Center">
-                    <Button x:Name="CountLessBtn" Text="-" Style="{StaticResource Key=StepperBtnStyle}" Clicked="CountLess" IsEnabled="False" />
-                    <Button x:Name="CountMoreBtn" Text="+" Style="{StaticResource Key=StepperBtnStyle}" Clicked="CountMore" />
+                <HorizontalStackLayout
+                    Grid.Row="2" Grid.Column="0"
+                    HorizontalOptions="Center">
+                    <Button Text="-"
+                        Style="{StaticResource Key=StepperBtnStyle}"
+                        Clicked="CountLess"
+                        IsVisible="{Binding ShowAdvancedOptions}"
+                        IsEnabled="{Binding EnableCountLessBtn}" />
+                    <Button Text="+"
+                        Style="{StaticResource Key=StepperBtnStyle}"
+                        Clicked="CountMore"
+                        IsVisible="{Binding ShowAdvancedOptions}"
+                        IsEnabled="{Binding EnableControls}" />
                 </HorizontalStackLayout>
 
-                <Label x:Name="NameLbl"
-                    Text="D20"
+                <Label Text="{Binding CurrentDie.Name}"
                     Grid.Row="1" Grid.Column="1"
-                    Style="{StaticResource Key=OutputLblStyle}"
-                    HorizontalOptions="Center" VerticalOptions="Center" />
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    Style="{StaticResource Key=OutputLblStyle}" />
 
                 <Label Text="Modifier"
                     Grid.Row="0" Grid.Column="2"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding ShowAdvancedOptions}" />
 
-                <Label x:Name="ModifierLbl"
-                    Text="+0"
+                <Label Text="{Binding FormattedModifier}"
                     Grid.Row="1" Grid.Column="2"
+                    HorizontalOptions="Center"
                     Style="{StaticResource Key=OutputLblStyle}"
-                    HorizontalOptions="Center" />
+                    IsVisible="{Binding ShowAdvancedOptions}" />
 
-                <HorizontalStackLayout Grid.Row="2" Grid.Column="2" HorizontalOptions="Center">
-                    <Button x:Name="ModifierLessBtn" Text="-" Style="{StaticResource Key=StepperBtnStyle}" Clicked="ModifierLess" />
-                    <Button x:Name="ModifierMoreBtn" Text="+" Style="{StaticResource Key=StepperBtnStyle}" Clicked="ModifierMore" />
+                <HorizontalStackLayout
+                    Grid.Row="2" Grid.Column="2"
+                    HorizontalOptions="Center">
+                    <Button Text="-"
+                        Style="{StaticResource Key=StepperBtnStyle}"
+                        Clicked="ModifierLess"
+                        IsVisible="{Binding ShowAdvancedOptions}"
+                        IsEnabled="{Binding EnableControls}" />
+                    <Button Text="+"
+                        Style="{StaticResource Key=StepperBtnStyle}"
+                        Clicked="ModifierMore"
+                        IsVisible="{Binding ShowAdvancedOptions}"
+                        IsEnabled="{Binding EnableControls}" />
                 </HorizontalStackLayout>
             </Grid>
 
-            <Button
-                x:Name="RollBtn"
+            <Button x:Name="RollBtn"
                 Text="Roll"
-                SemanticProperties.Hint="Rolls your selected die"
+                HorizontalOptions="Center"
                 Clicked="OnRollClicked"
-                HorizontalOptions="Center"
-                Style="{StaticResource Key=RollBtnStyle}"/>
+                Style="{StaticResource Key=RollBtnStyle}"
+                IsEnabled="{Binding EnableControls}" />
 
-            <Label
-                x:Name="OutputLbl"
+            <Label x:Name="OutputLbl"
                 Text=""
                 HorizontalOptions="Center"
-                Style="{StaticResource Key=OutputLblStyle}" />
+                Style="{StaticResource Key=OutputLblStyle}"
+                IsVisible="{Binding EnableControls}" />
 
-            <Label
-                x:Name="BreakdownLbl"
+            <Label x:Name="BreakdownLbl"
                 Text=""
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center"
+                IsVisible="{Binding EnableControls}" />
 
-            <ActivityIndicator
-                x:Name="RollAct"
-                IsVisible="False"
-                IsRunning="False" />
-
+            <ActivityIndicator x:Name="RollAct"
+                IsVisible="{Binding IsRolling}"
+                IsRunning="{Binding IsRolling}" />
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
