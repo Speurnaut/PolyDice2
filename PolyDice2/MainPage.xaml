@@ -46,18 +46,18 @@
 
                 <Label Text="#"
                     Grid.Row="0" Grid.Column="0"
-                    HorizontalOptions="Center"
+                    HorizontalOptions="Center" VerticalOptions="End"
                     IsVisible="{Binding ShowAdvancedOptions}" />
 
                 <Label Text="{Binding Count}"
                     Grid.Row="1" Grid.Column="0"
-                    HorizontalOptions="Center"
+                    HorizontalOptions="Center" VerticalOptions="Center"
                     Style="{StaticResource Key=OutputLblStyle}"
                     IsVisible="{Binding ShowAdvancedOptions}" />
 
                 <HorizontalStackLayout
                     Grid.Row="2" Grid.Column="0"
-                    HorizontalOptions="Center">
+                    HorizontalOptions="Center" VerticalOptions="End">
                     <Button Text="-"
                         Style="{StaticResource Key=StepperBtnStyle}"
                         Clicked="CountLess"
@@ -77,18 +77,18 @@
 
                 <Label Text="Modifier"
                     Grid.Row="0" Grid.Column="2"
-                    HorizontalOptions="Center"
+                    HorizontalOptions="Center" VerticalOptions="End"
                     IsVisible="{Binding ShowAdvancedOptions}" />
 
                 <Label Text="{Binding FormattedModifier}"
                     Grid.Row="1" Grid.Column="2"
-                    HorizontalOptions="Center"
+                    HorizontalOptions="Center" VerticalOptions="Center"
                     Style="{StaticResource Key=OutputLblStyle}"
                     IsVisible="{Binding ShowAdvancedOptions}" />
 
                 <HorizontalStackLayout
                     Grid.Row="2" Grid.Column="2"
-                    HorizontalOptions="Center">
+                    HorizontalOptions="Center" VerticalOptions="End">
                     <Button Text="-"
                         Style="{StaticResource Key=StepperBtnStyle}"
                         Clicked="ModifierLess"
