@@ -18,6 +18,7 @@
     <Style x:Key="OutputLblStyle" TargetType="Label">
         <Setter Property="FontSize" Value="48" />
         <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="Margin" Value="0,10,0,10" />
     </Style>
 
     <Style TargetType="ActivityIndicator">
