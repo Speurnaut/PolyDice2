@@ -143,10 +143,24 @@ public partial class MainPage : ContentPage
 		{
 			var timer = sender as IDispatcherTimer;
 			timer.Stop();
-            (string total, string breakdown) result = CurrentDie.Roll(Count, Modifier);
+
+            RollType rollType = AdvRad.IsChecked ?
+                RollType.Advantage :
+                DisRad.IsChecked ?
+                    RollType.Disadvantage :
+                    RollType.Normal;
+
+            (string total, string breakdown) result = CurrentDie.Roll(Count, Modifier, rollType);
             OutputLbl.Text = result.total;
             BreakdownLbl.Text = result.breakdown;
 			IsRolling = false;
 		});
 	}
+}
+
+public enum RollType
+{
+    Normal,
+    Advantage,
+    Disadvantage
 }

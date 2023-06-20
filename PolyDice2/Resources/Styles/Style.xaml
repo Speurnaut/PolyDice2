@@ -8,6 +8,7 @@
     <Color x:Key="GreyDark">#2B2B2B</Color>
     <SolidColorBrush x:Key="GreyMidBrush" Color="{StaticResource GreyMid}" />
     <SolidColorBrush x:Key="GreyLightBrush" Color="{StaticResource GreyLight}" />
+    <SolidColorBrush x:Key="TransparentBrush" Color="Transparent" />
 
     <Style TargetType="Page" ApplyToDerivedTypes="True">
         <Setter Property="BackgroundColor" Value="{StaticResource GreyDark}" />
@@ -29,7 +30,7 @@
         <Setter Property="HeightRequest" Value="81" />
         <Setter Property="Margin" Value="25" />
     </Style>
-    
+
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{StaticResource GreyDark}" />
         <Setter Property="Background" Value="{StaticResource GreyLightBrush}" />
@@ -49,12 +50,54 @@
     </Style>
 
     <Style x:Key="StepperBtnStyle" TargetType="Button">
-        <Setter Property="Margin" Value="5" />
+        <Setter Property="Margin" Value="5,0,5,0" />
     </Style>
 
     <Style x:Key="RollBtnStyle" TargetType="Button">
         <Setter Property="FontSize" Value="48" />
         <Setter Property="Margin" Value="10" />
         <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <ControlTemplate x:Key="RadioButtonTemplate">
+        <Border Background="{StaticResource TransparentBrush}">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CheckedStates">
+                        <VisualState x:Name="Checked">
+                            <VisualState.Setters>
+                                <Setter TargetName="check" Property="Opacity" Value="1" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Unchecked">
+                            <VisualState.Setters>
+                                <Setter TargetName="check" Property="Opacity" Value="0" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </VisualStateManager.VisualStateGroups>
+            <HorizontalStackLayout Margin="12">
+                <Grid
+                    Margin="0,0,4,0"
+                    WidthRequest="18" HeightRequest="18"
+                    HorizontalOptions="Start" VerticalOptions="Start">
+                    <Ellipse
+                        Stroke="{StaticResource GreyLight}"
+                        Fill="{StaticResource TransparentBrush}"
+                        WidthRequest="16" HeightRequest="16"
+                        HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Ellipse x:Name="check"
+                        Fill="{StaticResource GreyLight}"
+                        WidthRequest="12" HeightRequest="12"
+                        HorizontalOptions="Center" VerticalOptions="Center" />
+                </Grid>
+                <ContentPresenter />
+            </HorizontalStackLayout>
+        </Border>
+    </ControlTemplate>
+
+    <Style TargetType="RadioButton">
+        <Setter Property="ControlTemplate" Value="{StaticResource RadioButtonTemplate}" />
     </Style>
 </ResourceDictionary>

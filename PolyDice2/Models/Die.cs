@@ -28,7 +28,7 @@
             return rng.Next(1, Sides + 1);
         }
 
-        public (string result, string breakdown) Roll(int count = 1, int modifier = 0)
+        public (string result, string breakdown) Roll(int count = 1, int modifier = 0, RollType rollType = RollType.Normal)
         {
             int total = 0;
             string breakdown = "";
@@ -46,15 +46,36 @@
                     breakdown += " + ";
                 }
 
-                int roll = Roll();
-                total += roll;
-                breakdown += $"{Name}({roll})";
+                switch (rollType)
+                {
+                    case RollType.Advantage:
+                        int rollA1 = Roll();
+                        int rollA2 = Roll();
+                        total += rollA1 > rollA2 ? rollA1 : rollA2;
+                        breakdown += $"{Name}a({rollA1}, {rollA2})";
+                        break;
+                    case RollType.Disadvantage:
+                        int rollD1 = Roll();
+                        int rollD2 = Roll();
+                        total += rollD1 < rollD2 ? rollD1 : rollD2;
+                        breakdown += $"{Name}d({rollD1}, {rollD2})";
+                        break;
+                    default:
+                        int roll = Roll();
+                        total += roll;
+                        breakdown += $"{Name}({roll})";
+                        break;
+                }
             }
 
             total += modifier;
-            string formattedModifier = modifier >= 0 ? " + " + modifier : " - " + (modifier * -1);
-            breakdown += formattedModifier;
 
+            if (modifier != 0)
+            {
+                string formattedModifier = modifier >= 0 ? " + " + modifier : " - " + (modifier * -1);
+                breakdown += formattedModifier;
+            }
+            
             return (total.ToString(), breakdown);
         }
 
