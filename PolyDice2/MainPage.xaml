@@ -6,7 +6,7 @@
 
     <ScrollView>
         <VerticalStackLayout>
-            <Grid Padding="10" >
+            <Grid Padding="15,0,15,0" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="25" />
                     <ColumnDefinition Width="*" />
@@ -34,8 +34,8 @@
 
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition Height="18" />
+                    <RowDefinition Height="*" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -57,7 +57,7 @@
 
                 <HorizontalStackLayout
                     Grid.Row="2" Grid.Column="0"
-                    HorizontalOptions="Center" VerticalOptions="End">
+                    HorizontalOptions="Center" VerticalOptions="Center">
                     <Button Text="-"
                         Style="{StaticResource Key=StepperBtnStyle}"
                         Clicked="CountLess"
@@ -88,7 +88,7 @@
 
                 <HorizontalStackLayout
                     Grid.Row="2" Grid.Column="2"
-                    HorizontalOptions="Center" VerticalOptions="End">
+                    HorizontalOptions="Center" VerticalOptions="Center">
                     <Button Text="-"
                         Style="{StaticResource Key=StepperBtnStyle}"
                         Clicked="ModifierLess"
@@ -101,6 +101,21 @@
                         IsEnabled="{Binding EnableControls}" />
                 </HorizontalStackLayout>
             </Grid>
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <RadioButton x:Name="DisRad"
+                    Content="Disadvantage"
+                    IsVisible="{Binding ShowAdvancedOptions}"
+                    IsEnabled="{Binding EnableControls}" />
+                <RadioButton Content="Normal"
+                    IsChecked="True"
+                    IsVisible="{Binding ShowAdvancedOptions}"
+                    IsEnabled="{Binding EnableControls}" />
+                <RadioButton x:Name="AdvRad"
+                    Content="Advantage"
+                    IsVisible="{Binding ShowAdvancedOptions}"
+                    IsEnabled="{Binding EnableControls}" />
+            </HorizontalStackLayout>
 
             <Button x:Name="RollBtn"
                 Text="Roll"
