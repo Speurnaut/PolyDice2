@@ -6,6 +6,8 @@
     <Color x:Key="GreyLight">#7F7F7F</Color>
     <Color x:Key="GreyMid">#5D5D5D</Color>
     <Color x:Key="GreyDark">#2B2B2B</Color>
+    <SolidColorBrush x:Key="GreyMidBrush" Color="{StaticResource GreyMid}" />
+    <SolidColorBrush x:Key="GreyLightBrush" Color="{StaticResource GreyLight}" />
 
     <Style TargetType="Page" ApplyToDerivedTypes="True">
         <Setter Property="BackgroundColor" Value="{StaticResource GreyDark}" />
@@ -30,7 +32,7 @@
     
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{StaticResource GreyDark}" />
-        <Setter Property="BackgroundColor" Value="{StaticResource GreyLight}" />
+        <Setter Property="Background" Value="{StaticResource GreyLightBrush}" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
@@ -38,7 +40,7 @@
                     <VisualState x:Name="Normal" />
                     <VisualState x:Name="Disabled">
                         <VisualState.Setters>
-                            <Setter Property="BackgroundColor" Value="{StaticResource GreyMid}" />
+                            <Setter Property="Background" Value="{StaticResource GreyMidBrush}" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>

@@ -24,7 +24,9 @@ public partial class MainPage : ContentPage
         set {
             _die = value;
             OnPropertyChanged();
+            OnPropertyChanged(nameof(EnableControls));
             OnPropertyChanged(nameof(ShowAdvancedOptions));
+            OnPropertyChanged(nameof(EnableCountLessBtn));
         }
     }
 
@@ -70,10 +72,10 @@ public partial class MainPage : ContentPage
     }
 
     public MainPage()
-	{
+    {
+        BindingContext = this;
         CurrentDie = new Die(20);
         InitializeComponent();
-        BindingContext = this;
     }
 
 	private void OnRollClicked(object sender, EventArgs e)
