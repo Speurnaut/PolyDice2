@@ -51,14 +51,14 @@
                     case RollType.Advantage:
                         int rollA1 = Roll();
                         int rollA2 = Roll();
-                        total += rollA1 > rollA2 ? rollA1 : rollA2;
-                        breakdown += $"{Name}a({rollA1}, {rollA2})";
+                        total += Math.Max(rollA1, rollA2);
+                        breakdown += $"{Name}a({Math.Max(rollA1, rollA2)}, {Math.Min(rollA1, rollA2)})";
                         break;
                     case RollType.Disadvantage:
                         int rollD1 = Roll();
                         int rollD2 = Roll();
-                        total += rollD1 < rollD2 ? rollD1 : rollD2;
-                        breakdown += $"{Name}d({rollD1}, {rollD2})";
+                        total += Math.Min(rollD1, rollD2);
+                        breakdown += $"{Name}d({Math.Min(rollD1, rollD2)}, {Math.Max(rollD1, rollD2)})";
                         break;
                     default:
                         int roll = Roll();
