@@ -100,4 +100,10 @@
     <Style TargetType="RadioButton">
         <Setter Property="ControlTemplate" Value="{StaticResource RadioButtonTemplate}" />
     </Style>
+
+    <Style x:Key="CopyrightLblStyle" TargetType="Label">
+        <Setter Property="Opacity" Value="0.1" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,10,0,10" />
+    </Style>
 </ResourceDictionary>

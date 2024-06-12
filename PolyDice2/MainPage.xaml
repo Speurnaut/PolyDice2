@@ -138,6 +138,9 @@
             <ActivityIndicator x:Name="RollAct"
                 IsVisible="{Binding IsRolling}"
                 IsRunning="{Binding IsRolling}" />
+            <Label x:Name="CopyrightLbl"
+                Text="PolyDice2 © 2024"
+                Style="{StaticResource Key=CopyrightLblStyle}"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
